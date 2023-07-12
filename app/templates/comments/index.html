@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Главная</title>
+  </head>
+  <body>
+    <center>
+    <div>
+    <form action = '/comments' method ='post'>
+      <div>
+          <label>Your Comment: </label><br>
+            <textarea name="comment" rows="4" cols="50"></textarea><br>
+          <label>Category:</label><br>
+          <label>
+            <input type="radio" name="category" value="positive"> positive
+            <input type="radio" name="category" value="negative"> negative
+          </label><br>
+      </div>
+      <input type = "submit" value = "add">
+  </form>
+</div>
+    <h2>Comments:</h2>
+    {%for comment in comments%}
+    <div>
+    <h3>{{comment.category}} comment</h3>
+    <p>{{comment.text}}</p>
+    </div>
+    {%endfor%}
+    <div>
+      <ul>
+        {%for page_num in length%}
+        <span><a href="/comments?page={{page_num}}">{{page_num}}</a></span>
+        {%endfor%}
+
+      </ul>
+    </div>
+  </center>
+  </body>
+</html>
